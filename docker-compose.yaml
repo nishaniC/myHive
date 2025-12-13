@@ -10,7 +10,6 @@ services:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
       CLUSTER_NAME: test
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -26,7 +25,6 @@ services:
       - hadoop_datanode1:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -42,7 +40,6 @@ services:
       - hadoop_datanode2:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -60,7 +57,6 @@ services:
       - "8088:8088"
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode1:9864 datanode2:9864"
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -74,7 +70,6 @@ services:
       - resourcemanager
     environment:
       SERVICE_PRECONDITION: "resourcemanager:8088"
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -88,7 +83,6 @@ services:
       - resourcemanager
     environment:
       SERVICE_PRECONDITION: "resourcemanager:8088"
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     networks:
@@ -118,7 +112,6 @@ services:
       HIVE_METASTORE_DB_USER: hive
       HIVE_METASTORE_DB_PASSWORD: hive
       HIVE_METASTORE_URI: thrift://hive-metastore:9083
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     ports:
@@ -141,7 +134,6 @@ services:
     restart: always
     environment:
       HIVE_METASTORE_URI: thrift://hive-metastore:9083
-      HADOOP_HOME: /opt/hadoop
     env_file:
       - ./hadoop.env
     ports:
