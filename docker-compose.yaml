@@ -100,6 +100,8 @@ services:
       - "5432:5432"
     networks:
       - hadoop
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
@@ -154,6 +156,7 @@ volumes:
   hadoop_namenode:
   hadoop_datanode1:
   hadoop_datanode2:
+  postgres_data:
 
 networks:
   hadoop:
